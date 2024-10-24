@@ -25,4 +25,7 @@ To change the read/write to `readStream`/`writeStream`, use the following code:
 
 
 ```
+## Stream Processing Flow with API
+<img src="images/06-StreamProcessingFlow.jpg" alt="Delta Table Location in Hive" width="800" height="400"/>
+
 
