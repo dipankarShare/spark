@@ -105,4 +105,18 @@ class streamingBatchTestSuite():
   - Delta Table
   - Kafka
   - Other Connectors
-  
+
+N.B: - give a name to the run at writeStream, easy to test and monitor
+
+### Read - Archive
+```python
+def readInvoices(self):
+        return (spark.readStream
+                    .format("json")
+                    .schema(self.getSchema())
+                    #.option("cleanSource", "delete")
+                    .option("cleanSource", "archive")
+                    .option("sourceArchiveDir", f"{self.base_data_dir}/data/invoices_archive")
+                    .load(f"{self.base_data_dir}/data/invoices")
+                )
+```
