@@ -1,13 +1,12 @@
 ## Spark Overview
 
 <div align="center">
-    <img src="images/01-platform.jpg" alt="Platform" width="500" height="200" style="border: 2px solid #ccc; margin: 10px;"/>
-    <img src="images/02-flow.jpg" alt="Flow" width="500" height="200" style="border: 2px solid #ccc; margin: 10px;"/>
-    <img src="images/03-admin-setting-to-see-the-files-databricks.jpg" alt="Admin Setting for DBFS files" width="500" height="200" style="border: 2px solid #ccc; margin: 10px;"/>
-    <img src="images/04-hivemetastore-delta-table.jpg" alt="Delta Table Location in Hive" width="500" height="200" style="border: 2px solid #ccc; margin: 10px;"/>
-    <img src="images/05-02-word-count-test-suite-flow.jpg" alt="Sequential Flow Spark Job" width="500" height="200" style="border: 2px solid #ccc; margin: 10px;"/>
+<img src="images/01-platform.jpg" alt="Platform" width="500" height="200"/>
+<img src="images/02-flow.jpg" alt="Flow" width="500" height="200"/>
+<img src="images/03-admin-setting-to-see-the-files-databricks.jpg" alt="Admin Setting for DBFS files" width="500" height="200"/>
+<img src="images/04-hivemetastore-delta-table.jpg" alt="Delta Table Location in Hive" width="500" height="200"/>
+<img src="images/05-02-word-count-test-suite-flow.jpg" alt="Sequential Flow Spark Job" width="500" height="200"/>
 </div>
-
 
 ### For Streaming
 
@@ -58,9 +57,9 @@ sQuery = (flattenedDF.writeStream
                     .format("delta")
                     .option("checkpointLocation", f"{self.base_data_dir}/chekpoint/invoices")
                     .outputMode("append")
-                    .option("maxFilesPerTrigger", 1)
+                    .option("maxFilesPerTrigger", 1)                    
                 )
-
+        
         if (trigger == "batch"):
             return ( sQuery.trigger(availableNow = True)
                          .toTable("invoice_line_items"))
@@ -77,11 +76,11 @@ streamQuery = iStream.process("30 seconds")
 ##### if maxFilesPerTrigger set to 1 as in our example, it will process the 2nd file in 2nd batch, even if it exist in the base directory
 ```python
         iStream.process("batch")
-        self.waitForMicroBatch(10)
+        self.waitForMicroBatch(10)        
         self.assertResult(200)
         print("Validation passed.\n")
 ```
-where
+where 
 ```python
 class streamingBatchTestSuite():
     def appendInvoices(self, flattenedDF, trigger = "batch"):
@@ -89,7 +88,7 @@ class streamingBatchTestSuite():
                     .format("delta")
                     .option("checkpointLocation", f"{self.base_data_dir}/chekpoint/invoices")
                     .outputMode("append")
-                    .option("maxFilesPerTrigger", 1)
+                    .option("maxFilesPerTrigger", 1)                    
                 )
 
 
@@ -123,5 +122,3 @@ def readInvoices(self):
                     .load(f"{self.base_data_dir}/data/invoices")
                 )
 ```
-
-
