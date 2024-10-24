@@ -1,4 +1,4 @@
-Here’s how you can present the explanation of the Bronze, Silver, and Gold layers in a data warehouse as a `README.md` file:
+## Bronze, Silver, and Gold layers in a data warehouse
 
 ```markdown
 # Data Warehouse Architecture
@@ -42,8 +42,3 @@ The Bronze, Silver, and Gold architecture provides a clear pathway for data proc
 
 This layered approach enhances data governance, improves data accessibility, and facilitates efficient data analysis, making it easier for organizations to derive valuable insights from their data.
 ```
-
-### Usage
-
-- Copy the above Markdown text into a file named `README.md` in your project directory.
-- This structure will render well on platforms like GitHub, providing a clear and organized overview of the data warehouse architecture.
