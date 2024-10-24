@@ -48,4 +48,22 @@ To change the read/write to `readStream`/`writeStream`, use the following code:
             .toTable("invoice_line_items")
 ```
 
+### Max Files Limit
+##### default 1K files
+```python
+sQuery = (flattenedDF.writeStream
+                    .format("delta")
+                    .option("checkpointLocation", f"{self.base_data_dir}/chekpoint/invoices")
+                    .outputMode("append")
+                    .option("maxFilesPerTrigger", 1)                    
+                )
+        
+        if (trigger == "batch"):
+            return ( sQuery.trigger(availableNow = True)
+                         .toTable("invoice_line_items"))
+        else:
+            return ( sQuery.trigger(processingTime = trigger)
+                         .toTable("invoice_line_items"))
+```
+
 
