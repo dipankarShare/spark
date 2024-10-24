@@ -1,5 +1,7 @@
 ## Bronze, Silver, and Gold layers in a data warehouse
 
+![Data Warehouse](https://media.licdn.com/dms/image/v2/D5612AQHFNinBCL4c_g/article-cover_image-shrink_423_752/article-cover_image-shrink_423_752/0/1695482911613?e=1735171200&v=beta&t=mRHVAwjXGgtE00lmrxipmsTcv3sw2MMnR0g_qD2YHH4)
+
 ```markdown
 # Data Warehouse Architecture
 
