@@ -99,3 +99,10 @@ class streamingBatchTestSuite():
            return sQuery
 ```
 
+### The difference between source and sink - sink support foreach option
+- Supported
+  -- File/Directory
+  -- Delta Table
+  -- Kafka
+  -- Other Connectors
+  
