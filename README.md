@@ -10,12 +10,19 @@
 
 To change the read/write to `readStream`/`writeStream`, use the following code:
 
+    - outputMode can be complete/append/overwrite
+    - it returns a streaming query which can be hold in sQuery (given below), whereas the write method don't
 ```python
-return (flattenedDF.writeStream
+ - return (flattenedDF.writeStream
                     .format("delta")
                     .option("checkpointLocation", f"{self.base_data_dir}/checkpoint/invoices")
                     .outputMode("append")
                     .toTable("invoice_line_items")
         )
+
+ - sQuery = wc.wordCount()
+ - stop at the end of execution         sQuery.stop()
+
+
 ```
 
