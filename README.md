@@ -26,6 +26,26 @@ To change the read/write to `readStream`/`writeStream`, use the following code:
 
 ```
 ## Stream Processing Flow with API
+### Streaming Query background process ensures reading only the new data in each micro batch
 <img src="images/06-StreamProcessingFlow.jpg" alt="Delta Table Location in Hive" width="700" height="400"/>
+
+### Available-now trigger
+ - It can be unspecified
+ - Fixed interval
+```python
+    flattenedDF.writeStream.format("delta")
+            .option("checkpointLocation", f"{self.base_data_dir}/chekpoint/invoices")
+            .outputMode("append")
+            .trigger(processingTime='4 seconds')
+            .toTable("invoice_line_items")
+```
+ - Available now
+ ```python
+    flattenedDF.writeStream.format("delta")
+            .option("checkpointLocation", f"{self.base_data_dir}/chekpoint/invoices")
+            .outputMode("append")
+            .trigger(availableNow=True)
+            .toTable("invoice_line_items")
+```
 
 
